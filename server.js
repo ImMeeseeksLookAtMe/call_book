@@ -2,8 +2,10 @@ const express = require('express');
 const dotenv = require('dotenv');
 const cors = require('cors');
 
-
 const connectDB = require('./config/db');
+
+//ROUTES import
+const contactRoute = require('./routes/contact');
 
 const app = express(); 
 const port = process.env.PORT || 6000;
@@ -20,15 +22,11 @@ app.use(cors());
 //connect to DB
 connectDB();
 
+//API WAYS
+app.use('/', contactRoute);
+
 //server RUN
 app.listen(port, error => {
     if(error) throw error;
     console.log('App listening on port' + ' ' + port);
 });
-
-//______ROUTES_______
-
-// @desc get form Data
-// @route => /cliets
-// @type POST 
-

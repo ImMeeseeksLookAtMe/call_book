@@ -9,12 +9,14 @@
   "author": "Gregor Mlakar",
   "license": "ISC",
   "devDependencies": {
+    "concurrently": "^5.3.0",
     "nodemon": "^2.0.6"
   },
   "dependencies": {
     "cors": "^2.8.5",
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
+    "express-validator": "^6.7.0",
     "mongoose": "^5.11.2"
   }
 }

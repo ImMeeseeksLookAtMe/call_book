@@ -7,7 +7,7 @@ const connectDB = require('./config/db');
 //ROUTES import
 const contactRoute = require('./routes/contact');
 
-const app = express(); 
+const app = express();
 const port = process.env.PORT || 6000;
 
 //load env

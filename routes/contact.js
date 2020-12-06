@@ -12,10 +12,16 @@ const Contact = require('../models/Contact')
 router.get('/', async (req, res) => {
     try {
         //find all
-        const contacts = await Contact.find()
+        let contacts = await Contact.find();
 
+        if(Object.values(req.query).length !== 0) {
+            const value = JSON.parse(req.query.call.valueOf());
+            const foundNumbers = contacts.filter(db => db.called === value);
+            return res.json(foundNumbers)
+        }
+        
         res.json(contacts)
-
+        
     } catch (error) {
 
         res.status(500).send('Server Error')

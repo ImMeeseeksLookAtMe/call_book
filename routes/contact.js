@@ -83,4 +83,31 @@ router.post('/',
     }
 });
 
+
+// @desc update Call CLIENT / UPDATE
+// @route => /
+// @type PUT
+
+router.put('/:id', async (req, res) =>{
+    const {
+        called
+    } = req.body;
+    try {
+        
+        let contact = await Contact.findById(req.params.id)
+        if(!contact) {
+                return res.status(400).json({msg: `There is no contact with ${req.params.id}`})
+            }
+        contact.called = called;
+
+        await contact.save();
+
+        res.json(contact);
+        
+    } catch (error) {
+        console.error(err.message);
+        res.status(500).send('Server Error')
+    }
+});
+
 module.exports = router;

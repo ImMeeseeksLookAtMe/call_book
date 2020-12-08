@@ -1,10 +1,10 @@
 .form-control {
     background: none;
     background-color: white;
-    padding: 10px 10px 10px 5px;
+    padding: 10px 10px 10px 10px;
+    margin: 5px 10px;
     display: block;
     border: none;
-    border-radius: 0;
 }
 
 .submit-btn {
@@ -12,10 +12,24 @@
     background-color: white;
     color: black;
     border: 1px solid black;
+    padding: 10px;
+    margin: 10px 30px;
+    font-size: 20px;
+    border-radius: 10px;
 }
 
 .submit-btn:hover {
     background-color: black;
     color: white;
     border: none;
+}
+
+.form-and-alerts {
+    display: flex;
+    flex-direction: row;
+}
+
+.error {
+    padding: 10px;
+    margin: 5px 10px;
 }

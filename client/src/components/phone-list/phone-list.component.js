@@ -7,9 +7,9 @@ import './phone-list.styles.css';
 
 import PhoneListItem from '../phone-list-item/phone-list-item.component';
 import ContactForm from '../contact-form/contact-form.component';
-import { set } from 'mongoose';
 
 const PhoneList = () => {
+
     const [contacts, setContacts] = useState([]);
     const [newContact, setNewContact] = useToggle(false);
     const [sortCalled, setSortCalled] = useToggle(false);
@@ -26,6 +26,7 @@ const PhoneList = () => {
     useEffect(() => {
         fetchData();
     }, [setContacts, sortCalled])
+
     return (
         <div className='phone-list-container'>
             <div className='title-row'>

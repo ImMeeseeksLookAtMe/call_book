@@ -7,20 +7,21 @@ import './phone-list.styles.css';
 
 import PhoneListItem from '../phone-list-item/phone-list-item.component';
 import ContactForm from '../contact-form/contact-form.component';
+import { set } from 'mongoose';
 
 const PhoneList = () => {
     const [contacts, setContacts] = useState([]);
     const [newContact, setNewContact] = useToggle(false);
     const [sortCalled, setSortCalled] = useToggle(false);
-    console.log(contacts)
-    async function fetchData() {
+
+     async function fetchData() {
             try {
             const res = await axios.get(`http://localhost:3001/?call=${sortCalled}`);
             setContacts(res.data)
             } catch (error) {
                 console.log(error.message)
             }
-        }
+        } 
 
     useEffect(() => {
         fetchData();
@@ -43,11 +44,11 @@ const PhoneList = () => {
                 </span></span>
             </div>
             {
-                contacts.map(contact => <PhoneListItem key={contact._id} contact={contact}/>)
+                contacts.map(contact => <PhoneListItem key={contact._id} contact={contact}setContacts={setContacts}/>)
             }
-            <div onClick={() => setNewContact()}>Add new Contact</div>
+            <div className='btn-add' onClick={() => setNewContact()}>Add new Contact</div>
             {
-                newContact ? <ContactForm /> : null
+                newContact ? <ContactForm setContacts={setContacts}/> : null
             }
         </div>
     )

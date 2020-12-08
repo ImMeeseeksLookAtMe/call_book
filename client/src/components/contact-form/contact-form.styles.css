@@ -1,0 +1,21 @@
+.form-control {
+    background: none;
+    background-color: white;
+    padding: 10px 10px 10px 5px;
+    display: block;
+    border: none;
+    border-radius: 0;
+}
+
+.submit-btn {
+    border-radius: 2;
+    background-color: white;
+    color: black;
+    border: 1px solid black;
+}
+
+.submit-btn:hover {
+    background-color: black;
+    color: white;
+    border: none;
+}

@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 
-const ContactForm = () => {
+import './contact-form.styles.css';
+
+const ContactForm = ({setContacts}) => {
     const [formData, setFormData] = useState({
         name: '',
         surname: '',
@@ -26,8 +28,8 @@ const ContactForm = () => {
                 }
             }
 
-            await axios.post(`http://localhost:3001/`, contactData, config);
-            
+            const res = await axios.post(`http://localhost:3001/`, contactData, config);
+            setContacts(res.data)
         } catch (error) {
             console.log("failed to update")
         }
@@ -37,7 +39,8 @@ const ContactForm = () => {
 
     const onSubmit = e => {
         e.preventDefault();
-        createContact(formData)
+        createContact(formData);
+        
     };
 
     return (
@@ -107,7 +110,7 @@ const ContactForm = () => {
                 />
                 </label>
             </div>
-            <input type='submit' value='Add Contact'></input>
+            <input className="submit-btn" type='submit' value='Add Contact'></input>
         </form>
     )
 }

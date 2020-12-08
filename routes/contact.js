@@ -75,7 +75,9 @@ router.post('/',
 
         await contact.save();
 
-        res.json(contact);
+        const contacts = await Contact.find()
+        
+        res.json(contacts);
 
     } catch (error) {
         
@@ -102,7 +104,9 @@ router.put('/:id', async (req, res) =>{
 
         await contact.save();
 
-        res.json(contact);
+        const contacts = await Contact.find()
+        
+        res.json(contacts);
         
     } catch (error) {
         console.error(err.message);

@@ -4,7 +4,7 @@ import axios from 'axios'
 import useToggle from "../../hooks/useToggle";
 import './phone-list-item.styles.css';
 
-const PhoneListItem = ({contact}) => {
+const PhoneListItem = ({contact, setContacts}) => {
     const { name, surname, email, address, called, phoneNumber, _id } = contact
     const [call, setCall] = useToggle(called)
     async function updateCall(id, isCall) {
@@ -18,7 +18,7 @@ const PhoneListItem = ({contact}) => {
             
             const res = await axios.put(`http://localhost:3001/${id}`, objectCalled, config);
             //set errors array
-
+            setContacts(res.data)
         } catch (error) {
             console.log("failed to update")
         }
